@@ -13,6 +13,7 @@
     "@astrojs/sitemap": "^3.7.2",
     "@lexingtonthemes/seo": "^0.1.0",
     "astro": "^6.1.5",
+    "react-responsive-carousel": "^3.2.23",
     "tailwind-scrollbar-hide": "^4.0.0"
   },
   "devDependencies": {
