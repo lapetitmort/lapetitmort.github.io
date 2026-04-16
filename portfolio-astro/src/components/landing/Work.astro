@@ -7,6 +7,8 @@ import three from "@/images/work/Finnt_App.png";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ArrowRight from "../fundations/icons/ArrowRight.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 
 const featuredProjects = [
   {
@@ -62,52 +64,40 @@ const featuredProjects = [
       </Text>
     </div>
 
-    <div class="flex flex-col lg:gap-12 mt-8">
-      {
-        featuredProjects.map((project) => (
-          <article class="py-12 border-t border-base-200 dark:border-base-800">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start">
-              <Text
-                tag="p"
-                variant="textXS"
-                class="text-base-600 dark:text-base-300 uppercase"
-              >
-                {project.year}
-              </Text>
-              <Text
-                tag="h3"
-                variant="displaySM"
-                class="text-base-900 dark:text-white leading-tight font-semibold "
-              >
-                {project.title}
-              </Text>
-              <Text
-                tag="p"
-                variant="textSM"
-                class="text-base-600 dark:text-base-300"
-              >
-                {project.description}
-              </Text>
-              <Text
-                tag="p"
-                variant="textXS"
-                class="text-base-600 dark:text-base-300 uppercase lg:ml-auto lg:col-start-4"
-              >
-                {project.category}
-              </Text>
-            </div>
-            <Image
-              width={1420}
-              height={930}
-              src={project.image}
-              alt={project.imageAlt}
-              loading="lazy"
-              decoding="async"
-              class="size-full rounded-4xl mt-12 object-cover object-center"
-            />
-          </article>
-        ))
-      }
+    <!-- Slider -->
+    <div class="relative mt-12 group">
+      <!-- Right Button -->
+        <!-- Track del Slider -->
+         <div id="sliderTrack" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar rounded-4xl">
+            {
+              featuredProjects.map((project) => (
+                <div class="min-w-full snap-center">
+                  <!-- Info del proyecto -->
+                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
+                      <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase">{project.year}</Text>
+                      <Text tag="h3" variant="displaySM" class="text-base-900 dark:text-white leading-tight font-semibold">{project.title}</Text>
+                      <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">{project.description}</Text>
+                      <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase lg:ml-auto">{project.category}</Text>
+                    </div>
+                    <Image
+                    width={1420}
+                    height={930}
+                    src={project.image}
+                    alt={project.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    class="rounded-4xl mt-12 object-cover w-full"
+                    />
+                  </div>
+
+              ))
+            }
+        </div>
     </div>
   </Wrapper>
 </section>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
