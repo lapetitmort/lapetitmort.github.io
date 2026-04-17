@@ -2,45 +2,54 @@
 // Assets
 import { Image } from "astro:assets";
 import one from "@/images/work/Emerios_site_Ready.png";
-import two from "@/images/work/WestlawAsia_TR.png";
-import three from "@/images/work/Finnt_App.png";
+import two from "@/images/work/EmeriosSiteReady_2.png";
+import three from "@/images/work/EmeriosSiteReady_3.png";
+import four from "@/images/work/EmeriosSiteReady_4.png";
+import five from "@/images/work/EmeriosSiteReady_5.png";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-import ArrowRight from "../fundations/icons/ArrowRight.astro";
-import Button from "@/components/fundations/elements/Button.astro";
 
 const featuredProjects = [
   {
     year: "2025",
     title: "Emerios Site",
-    description:
-      "An electric vehicle platform built around modular hardware, real-time telemetry, and software-defined systems for efficiency, autonomy, and long-term scalability.",
-    category: "Electric Vehicle Platform",
+    description: "For this project I defined the overall concept and direction for the Emerios site, shaping the visual and communication approach to ensure a clear, modern, and trustworthy brand experience. I created the initial layout diagram prototypes, developed low-fidelity prototypes to explore structure and user flow, and produced all isometric illustrations end-to-end—from the first sketches to the final polished assets.",
+    category: "UX/UI for B2B Contact & Lead Generation",
     image: one,
-    imageAlt:
-      "Electric car in motion against a minimal background, highlighting a digital cockpit and aerodynamic design.",
+    imageAlt: "Prototype homepage screenshot showing a header with “Elevate Your Business Relationship Management” and a visual section with buildings and technology",
   },
-
   {
-    year: "2026",
-    title: "Aurora Ride",
-    description:
-      "An electric mobility subscription focused on real-time diagnostics, predictive maintenance, and low-friction commuter flows.",
-    category: "Product Systems",
+    year: "2025",
+    title: "Emerios Site",
+    description: "For this project I defined the overall concept and direction for the Emerios site, shaping the visual and communication approach to ensure a clear, modern, and trustworthy brand experience. I created the initial layout diagram prototypes, developed low-fidelity prototypes to explore structure and user flow, and produced all isometric illustrations end-to-end—from the first sketches to the final polished assets.",
+    category: "UX/UI for B2B Contact & Lead Generation",
     image: two,
-    imageAlt:
-      "Modern electric bicycle positioned against a minimal, light-colored wall.",
+    imageAlt: "Prototype homepage showing a header with “About Emerios” and a visual section with Prototype homepage screenshot showing an “About Emerios” section with a headline, tagline text, and a 3D office-and-technology illustration.",
   },
   {
-    year: "2026",
-    title: "Northwind",
-    description:
-      "An electric device platform built around efficient power management, embedded firmware, and production-ready industrial design for reliable, scalable deployment.",
-    category: "Hardware & Embedded Systems",
+    year: "2025",
+    title: "Emerios Site",
+    description: "For this project I defined the overall concept and direction for the Emerios site, shaping the visual and communication approach to ensure a clear, modern, and trustworthy brand experience. I created the initial layout diagram prototypes, developed low-fidelity prototypes to explore structure and user flow, and produced all isometric illustrations end-to-end—from the first sketches to the final polished assets.",
+    category: "UX/UI for B2B Contact & Lead Generation",
     image: three,
-    imageAlt:
-      "Minimal electric device on a clean surface, showing precision controls, status indicators, and compact industrial design.",
+    imageAlt: "Prototype hero screenshot showing the “Make a career with Emerios” headline, a navigation menu, and a 3D recruitment-and-technology illustration on the right.",
+  },
+  {
+    year: "2025",
+    title: "Emerios Site",
+    description: "For this project I defined the overall concept and direction for the Emerios site, shaping the visual and communication approach to ensure a clear, modern, and trustworthy brand experience. I created the initial layout diagram prototypes, developed low-fidelity prototypes to explore structure and user flow, and produced all isometric illustrations end-to-end—from the first sketches to the final polished assets.",
+    category: "UX/UI for B2B Contact & Lead Generation",
+    image: four,
+    imageAlt: "Prototype screenshot for the “Support Center” page, showing the top navigation links, the “Support Center” headline a 3D building-style illustration on the right.",
+  },
+  {
+    year: "2025",
+    title: "Emerios Site",
+    description: "For this project I defined the overall concept and direction for the Emerios site, shaping the visual and communication approach to ensure a clear, modern, and trustworthy brand experience. I created the initial layout diagram prototypes, developed low-fidelity prototypes to explore structure and user flow, and produced all isometric illustrations end-to-end—from the first sketches to the final polished assets.",
+    category: "UX/UI for B2B Contact & Lead Generation",
+    image: five,
+    imageAlt: "Prototype screenshot for the “Emerios Platform Solution” page, with top navigation, headline and supporting text on the left, and a 3D platform illustration with connected cards on the right.",
   },
 ];
 ---
@@ -49,55 +58,77 @@ const featuredProjects = [
   <Wrapper variant="standard" class="py-12 lg:py-24">
     <div class="grid grid-cols-1 lg:grid-cols-4 items-start">
       <div class="lg:col-start-2">
-        <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300"
-          >Featured Work
-          <br />
-          2026 - Now</Text
-        >
+        <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">
+          Featured Work <br /> 2016 - Now
+        </Text>
       </div>
-      <Text
-        tag="h2"
-        variant="textXL"
-        class="font-semibold leading-snug text-left tracking-tighter lg:col-span-2 text-base-900 dark:text-white"
-      >
+      <Text tag="h2" variant="textXL" class="font-semibold leading-snug text-left tracking-tighter lg:col-span-2 text-base-900 dark:text-white">
         Work
       </Text>
     </div>
 
-    <!-- Slider -->
     <div class="relative mt-12 group">
-      <!-- Right Button -->
-        <!-- Track del Slider -->
-         <div id="sliderTrack" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar rounded-4xl">
-            {
-              featuredProjects.map((project) => (
-                <div class="min-w-full snap-center">
-                  <!-- Info del proyecto -->
-                    <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
-                      <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase">{project.year}</Text>
-                      <Text tag="h3" variant="displaySM" class="text-base-900 dark:text-white leading-tight font-semibold">{project.title}</Text>
-                      <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">{project.description}</Text>
-                      <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase lg:ml-auto">{project.category}</Text>
-                    </div>
-                    <Image
-                    width={1420}
-                    height={930}
-                    src={project.image}
-                    alt={project.imageAlt}
-                    loading="lazy"
-                    decoding="async"
-                    class="rounded-4xl mt-12 object-cover w-full"
-                    />
-                  </div>
+      <div id="sliderTrack" class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar rounded-4xl">
+        {
+          featuredProjects.map((project, index) => {
+            const [visible, hidden] = project.description.split("brand experience.");
+            return (
+              <div class="min-w-[90%] snap-center">
+                <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
+                  <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase">{project.year}</Text>
+                  <Text tag="h3" variant="displaySM" class="text-base-900 dark:text-white leading-tight font-semibold">{project.title}</Text>
+                  
+                  <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">
+                    {visible}brand experience.
+                    <span id={`extra-${index}`} class="hidden">{hidden}</span>
+                    <button 
+                      class="see-more-btn ml-1 underline font-medium text-base-900 dark:text-white cursor-pointer"
+                      data-target={`extra-${index}`}
+                    >
+                      See More
+                    </button>
+                  </Text>
 
-              ))
-            }
-        </div>
+                  <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase lg:ml-auto">{project.category}</Text>
+                </div>
+                <Image
+                  width={1420}
+                  height={930}
+                  src={project.image}
+                  alt={project.imageAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="rounded-4xl mt-12 object-cover w-full"
+                />
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   </Wrapper>
 </section>
 
+<script>
+  const buttons = document.querySelectorAll('.see-more-btn');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.getAttribute('data-target');
+      
+      // La validación "if (targetId)" elimina el error de TypeScript
+      if (targetId) {
+        const extraText = document.getElementById(targetId);
+        if (extraText) {
+          const isHidden = extraText.classList.toggle('hidden');
+          btn.textContent = isHidden ? 'See More' : 'Show Less';
+        }
+      }
+    });
+  });
+</script>
+
 <style>
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hidden { display: none; }
 </style>

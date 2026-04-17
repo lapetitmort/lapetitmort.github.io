@@ -1,7 +1,14 @@
 ---
+import Text from "@/components/fundations/elements/Text.astro";
 const { class: className = "", ...rest } = Astro.props;
 ---
 
-<span class={className} {...rest}>carolina rojas</span>
-
+<Text 
+  tag="span" 
+  variant="textBase" 
+  class={`font-bold uppercase tracking-tighter ${className}`} 
+  {...rest}
+>
+  carolina rojas
+</Text>
 
