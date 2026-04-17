@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Text from "@/components/fundations/elements/Text.astro";
+
+interface Project {
+  year: string;
+  title: string;
+  description: string;
+  category: string;
+  image: any;
+  imageAlt: string;
+}
+
+interface Props {
+  projects: Project[];
+  sliderId: string;
+}
+
+const { projects, sliderId } = Astro.props;
+---
+
+<div class="relative mt-12 group">
+  <div id={sliderId} class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar rounded-4xl">
+    {
+      projects.map((project: Project, index: number) => {
+        const [visible, hidden] = project.description.split("brand experience.");
+        return (
+          <div class="min-w-full lg:min-w-full snap-center pr-4">
+            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
+              <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase">{project.year}</Text>
+              <Text tag="h3" variant="displaySM" class="text-base-900 dark:text-white leading-tight font-semibold">{project.title}</Text>
+              
+              <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">
+                {visible}brand experience.
+                <span id={`extra-${sliderId}-${index}`} class="hidden">{hidden}</span>
+                <button 
+                  class="see-more-btn ml-1 underline font-medium text-base-900 dark:text-white cursor-pointer"
+                  data-target={`extra-${sliderId}-${index}`}
+                >
+                  See More
+                </button>
+              </Text>
+
+              <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase lg:ml-auto">{project.category}</Text>
+            </div>
+            <Image
+              width={1420}
+              height={930}
+              src={project.image}
+              alt={project.imageAlt}
+              class="rounded-4xl mt-12 object-cover w-full"
+            />
+          </div>
+        )
+      })
+    }
+  </div>
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hidden { display: none; }
+</style>
