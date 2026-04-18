@@ -8,6 +8,6 @@ export default defineConfig({
   },
   
   site: 'https://lapetitmort.github.io',
-  base: '/my-repo',
+  base: '/portfolio-astro/',
   integrations: [sitemap()]
 });
