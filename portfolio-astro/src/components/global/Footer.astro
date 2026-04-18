@@ -6,9 +6,9 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 const links = [
-  { href: "#_", text: "LinkedIn" },
-  { href: "#_", text: "Arena" },
-  { href: "#_", text: "GitHub" },
+  { href: "https://www.linkedin.com/in/carolina-r-5aa13441/", text: "LinkedIn", isExternal: true },
+  { href: "https://github.com", text: "GitHub", isExternal: true },
+  { href: "mailto:carolreds85@gmail.com", text: "Email", isExternal: false },
 ];
 const year = new Date().getFullYear();
 ---
@@ -27,7 +27,9 @@ const year = new Date().getFullYear();
           links.map((link) => (
             <a
               href={link.href}
-              class="text-base-600 tracking-tight  text-xs hover:text-base-900 dark:text-white transition-colors"
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="text-base-600 tracking-tight  text-xs hover:text-base-900 dark :text-white transition-colors"
             >
               {link.text}
             </a>
