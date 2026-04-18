@@ -1,10 +1,8 @@
 ---
-// Assets
 import Logo from "@/components/assets/Logo.astro";
-// Fundations
 import Text from "@/components/fundations/elements/Text.astro";
-import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ThemeToggle from "@/components/fundations/elements/ThemeToggle.astro"
 
 const links = [
   { href: "#work", text: "Work" },
@@ -15,36 +13,64 @@ const links = [
 ];
 ---
 
-<nav class="bg-white dark:bg-base-950 fixed top-0 z-10 w-full">
-  <Wrapper variant="standard" class="py-2">
-    <div class="grid grid-cols-3 lg:grid-cols-4 items-start">
+<nav class="fixed top-0 z-50 w-full transition-all backdrop-blur-md border-base-200">
+  <Wrapper variant="standard" class="py-4">
+    <div class="nav-grid items-start">
+      {/* 1. Logo */}
       <a href="/" class="-mt-1 flex">
-        <Logo
-          class="text-base-600 dark:text-base-300 text-xs tracking-tight font-base-900"
-        />
+        <Logo class="text-(--color-main-text)" />
       </a>
-      <Text
-        tag="p"
-        variant="textXS"
-        class="text-base-600 dark:text-base-300 tracking-tight font-base"
-      >
-        Graphic Designer<br />Buenos Aires, Argentina
-      <div class="hidden lg:flex gap-8 text-sm items-center">
-        {
-          links.map((link) => (
-            <a
-              href={link.href}
-              class="text-base-600 dark:text-base-300  tracking-tight text-xs"
-            >
-              {link.text}
-            </a>
-          ))
-        }
+      
+      {/* 2. Info (Con clase para ocultar) */}
+      <div class="hide-on-mobile">
+        <Text tag="p" variant="textXS" class="text-(--color-muted-text) tracking-tight">
+          Graphic Designer<br />Buenos Aires, Argentina
+        </Text>
       </div>
-      <a
-        class="text-base-600 dark:text-base-300 text-xs tracking-tight font-base ml-auto"
-        >Download
-      </a>
+
+      {/* 3. Links (Con clase para ocultar) */}
+      <div class="hide-on-mobile links-flex gap-8">
+        {links.map((link) => (
+          <a href={link.href} class="text-(--color-muted-text) hover:text-(--color-main-text) tracking-tight text-xs transition-colors">
+            {link.text}
+          </a>
+        ))}
+      </div>
+
+      {/* 4. Toggle */}
+      <div class="flex flex-col items-end">
+        <ThemeToggle />
+      </div>
     </div>
   </Wrapper>
 </nav>
+
+<style>
+  /* CONFIGURACIÓN MÓVIL (Default) */
+  .nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Solo 2 columnas: Logo y Toggle */
+    width: 100%;
+  }
+
+  .hide-on-mobile {
+    display: none; /* Escondemos lo del medio */
+  }
+
+  /* CONFIGURACIÓN DESKTOP (Media Query) */
+  @media (min-width: 1024px) {
+    .nav-grid {
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas para que entre todo */
+    }
+    
+    .hide-on-mobile {
+      display: block;
+    }
+    
+    .hide-on-mobile.links-flex {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+  }
+</style>

@@ -27,21 +27,32 @@ const { projects, sliderId } = Astro.props;
         return (
           <div class="min-w-full snap-center pr-4">
             <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
-              <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase">{project.year}</Text>
-              <Text tag="h3" variant="displaySM" class="text-base-900 dark:text-white leading-tight font-semibold">{project.title}</Text>
+              {/* Año: Color gris/muted */}
+              <Text tag="p" variant="textXS" class="text-(--color-muted-text) uppercase">
+                {project.year}
+              </Text>
+
+              {/* Título: Color principal (Blanco en dark / Negro en light) */}
+              <Text tag="h3" variant="displaySM" class="text-(--color-main-text) leading-tight font-semibold">
+                {project.title}
+              </Text>
               
-              <Text tag="p" variant="textSM" class="text-base-600 dark:text-base-300">
+              {/* Descripción: Color gris/muted */}
+              <Text tag="p" variant="textSM" class="text-(--color-muted-text)">
                 {visible}brand experience.
                 <span id={`extra-${sliderId}-${index}`} class="hidden">{hidden}</span>
                 <button 
-                  class="see-more-btn ml-1 underline font-medium text-base-900 dark:text-white cursor-pointer"
+                  class="see-more-btn ml-1 underline font-medium text-(--color-main-text) cursor-pointer"
                   data-target={`extra-${sliderId}-${index}`}
                 >
                   See More
                 </button>
               </Text>
 
-              <Text tag="p" variant="textXS" class="text-base-600 dark:text-base-300 uppercase lg:ml-auto">{project.category}</Text>
+              {/* Categoría: Color gris/muted */}
+              <Text tag="p" variant="textXS" class="text-(--color-muted-text) uppercase lg:ml-auto">
+                {project.category}
+              </Text>
             </div>
             
             <div class="mt-12 overflow-hidden rounded-4xl">

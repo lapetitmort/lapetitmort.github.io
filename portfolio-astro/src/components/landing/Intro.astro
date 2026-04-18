@@ -1,19 +1,23 @@
 ---
-// Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 ---
 
-<section>
-  <Wrapper variant="standard" class="pb-8 pt-40 lg:pt-80">
-    <div class="grid grid-cols-1 lg:grid-cols-4 items-start gap-y-8">
-      <Text
-        tag="h1"
-        variant="displayLG"
-        class="font-semibold leading-snug text-left tracking-tighter lg:col-span-2 text-base-900 dark:text-white lg:col-start-3"
-      >
-        UX/UI Designer. <br> I turn abstract ideas into elegant
-        interfaces. Bilingual (ES/EN). <br> Dev-ready UI.
+<section class="relative z-0">
+  <Wrapper variant="standard" class="pb-12 pt-64">
+    <div class="grid grid-cols-1 lg:grid-cols-4">
+      <div class="lg:col-start-3 lg:col-span-2">
+        {/* Uso 'style' para forzar el color de la variable en el global */}
+        <Text
+          tag="h1"
+          variant="displayLG"
+          class="font-semibold leading-tight text-left tracking-tighter"
+          style="color: var(--color-main-text) !important;"
+        >
+          UX/UI Designer. <br /> I turn abstract ideas into elegant
+          interfaces. Bilingual (ES/EN). <br /> Dev-ready UI.
+        </Text>
+      </div>
     </div>
   </Wrapper>
 </section>

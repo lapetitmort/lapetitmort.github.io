@@ -1,0 +1,38 @@
+---
+// ThemeToggle.astro
+---
+
+<button
+  id="themeToggle"
+  type="button"
+  class="group inline-flex items-center gap-3 px-6 py-2 rounded-full border transition-all duration-300 cursor-pointer"
+  style="background-color: var(--toggle-bg); color: var(--toggle-text); border-color: var(--toggle-border);"
+>
+  <span class="text-xs font-medium tracking-tight pointer-events-none">
+    <span class="mode-text-light">Dark Mode</span>
+    <span class="mode-text-dark">Light Mode</span>
+  </span>
+
+  <div class="w-5 h-5 flex items-center justify-center pointer-events-none">
+    <svg xmlns="http://w3.org" class="icon-light w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+    <svg xmlns="http://w3.org" class="icon-dark w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+  </div>
+</button>
+
+<style>
+  .mode-text-dark, .icon-dark { display: none; }
+  :global(.dark) .mode-text-light, :global(.dark) .icon-light { display: none; }
+  :global(.dark) .mode-text-dark, :global(.dark) .icon-dark { display: block; }
+</style>
+
+<script is:inline>
+  const setupToggle = () => {
+    const btn = document.getElementById("themeToggle");
+    btn?.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  };
+  setupToggle();
+  document.addEventListener('astro:after-swap', setupToggle);
+</script>
