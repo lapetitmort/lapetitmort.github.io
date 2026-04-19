@@ -9,5 +9,4 @@ export default defineConfig({
   
   site: 'https://lapetitmort.github.io',
   base: '/portfolio-astro/',
-  integrations: [sitemap()]
 });
