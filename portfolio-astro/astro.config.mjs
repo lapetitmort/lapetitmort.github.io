@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   site: 'https://github.io',
-  base: '/', 
+  base: './portfolio-astro', 
   output: 'static',
   integrations: [sitemap()],
   vite: {
