@@ -89,7 +89,7 @@ const baseClass = [
 {
   isLink ? (
     <a
-      href={rest.href}
+      href={rest.href.startsWith('http') ? rest.href : `${import.meta.env.BASE_URL}${rest.href}`}
       class:list={[
         ...baseClass,
         ...(variantClass[variant] || []),

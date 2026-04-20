@@ -18,14 +18,15 @@
 @plugin "@tailwindcss/typography";
 @plugin "tailwind-scrollbar-hide";
 
-/* VARIABLES DE TEMA */
+/* Colores de Theme */
 :root {
   --bg-page: var(--color-base-50);
   --text-page: var(--color-base-900);
   --toggle-bg: var(--color-base-50);
   --toggle-text: var(--color-base-900);
   --toggle-border: var(--color-base-200);
-  --bg-texture: url('@/images/concrete-wall-background.jpg'); 
+  /* Ruta corregida con el 'base' */
+  --bg-texture: url('/portfolio-astro/images/texture.jpg');
   --bg-blend: hard-light;
 }
 
@@ -35,7 +36,7 @@
   --toggle-bg: var(--color-base-900);
   --toggle-text: var(--color-base-50);
   --toggle-border: var(--color-base-800);
-  --bg-texture: url('@/images/concrete-wall-background.jpg');
+  --bg-texture: url('/portfolio-astro/images/concrete-wall-background.jpg');
   --bg-blend: soft-light;
 }
 
@@ -49,11 +50,10 @@
     color: var(--text-page) !important;
     transition: background-color 0.3s ease, color 0.3s ease;
     
-    /* Configuración de la textura */
     background-image: var(--bg-texture);
     background-repeat: repeat;
-    background-attachment: fixed; /* La textura se queda quieta, el contenido desliza */
-    background-size: 800px; /* Tamaño del grano de la textura */
+    background-attachment: fixed;
+    background-size: 800px;
     background-blend-mode: var(--bg-blend);
   }
 }
