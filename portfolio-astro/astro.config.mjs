@@ -3,12 +3,10 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: 'https://lapetitmort.github.io',
-  base: '/portfolio-astro', 
-  
+  site: 'https://github.io',
+  base: '/', 
   output: 'static',
   integrations: [sitemap()],
-
   vite: {
     plugins: [tailwindcss()],
   },
