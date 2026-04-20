@@ -5,9 +5,9 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ThemeToggle from "@/components/fundations/elements/ThemeToggle.astro"
 
 const links = [
-  { href: `${import.meta.env.BASE_URL}/#work`, text: "Work" },
-  { href: `${import.meta.env.BASE_URL}/#education`, text: "Education" },
-  { href: `${import.meta.env.BASE_URL}/#speaking`, text: "Speaking" },
+  { href: "#work", text: "Work" },
+  { href: "#education", text: "Education" },
+  { href: "#speaking", text: "Speaking" },
 ];
 ---
 
@@ -15,7 +15,7 @@ const links = [
   <Wrapper variant="standard" class="py-4">
     <div class="nav-grid items-start">
       {/* 1. Logo */}
-      <a href=`${import.meta.env.BASE_URL}/` class="-mt-1 flex">
+      <a href="/" class="-mt-1 flex">
         <Logo class="text-(--color-main-text)" />
       </a>
       

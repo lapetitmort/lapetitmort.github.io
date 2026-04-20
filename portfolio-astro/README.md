@@ -1,46 +1,74 @@
-# Astro Starter Kit: Basics
+
+# Lapetitmort Portfolio (Astro)
+
+![Build Status](https://github.com/lapetitmort/lapetitmort.github.io/actions/workflows/deploy.yml/badge.svg)
+![License](../LICENSE)
+
+## ✨ What the Project Does
+
+A modern, visually-rich portfolio site for a UX/UI designer and developer, built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/). It showcases featured work, education, and speaking engagements, with a focus on elegant, accessible, and performant design.
+
+## 🚀 Key Features & Benefits
+
+- **Showcases UX/UI projects** with image sliders and detailed descriptions
+- **Responsive, accessible design** with dark mode support
+- **Sections for work, education, and talks**
+- **Built with Astro for fast static delivery**
+- **Tailwind CSS for rapid, consistent styling**
+- **SEO-ready** with best practices and sitemap integration
+- **Deployed automatically to GitHub Pages**
+
+## 🛠️ Getting Started
+
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### Installation
+
+Clone the repository and install dependencies:
 
 ```sh
-npm create astro@latest -- --template basics
+git clone https://github.com/lapetitmort/lapetitmort.github.io.git
+cd lapetitmort.github.io/portfolio-astro
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+### Running Locally
 
-## 🚀 Project Structure
+```sh
+npm run dev
+```
+Visit [http://localhost:4321](http://localhost:4321) to view the site.
 
-Inside of your Astro project, you'll see the following folders and files:
+### Building for Production
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+```
+The static site will be output to the `dist/` directory.
+
+### Preview Production Build
+
+```sh
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 📚 Where to Get Help
 
-## 🧞 Commands
+- [Astro Documentation](https://docs.astro.build)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+- [GitHub Issues](../../issues) for bug reports and feature requests
 
-All commands are run from the root of the project, from a terminal:
+## 👩‍💻 Maintainers & Contributions
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- **Maintainer:** Carolina Rojas ([LinkedIn](https://www.linkedin.com/in/carolina-r-5aa13441/), [Email](mailto:carolreds85@gmail.com))
+- **Contributions:** Contributions are welcome! Please see the `CONTRIBUTING.md` file for guidelines (to be added).
 
-## 👀 Want to learn more?
+## 📄 License
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+This project is licensed under the terms of the [LICENSE](../LICENSE) file.
+
+---
+
+> _Built with Astro, Tailwind CSS, and a passion for design._
