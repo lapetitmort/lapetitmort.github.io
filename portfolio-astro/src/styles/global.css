@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: "Inter", sans-serif;
+  --color-base-0: oklch(1 0 0);
   --color-base-50: oklch(0.985 0 0);
   --color-base-75: oklch(97.53% 0.004 106.47);
   --color-base-900: oklch(0.205 0 0);
@@ -27,8 +28,8 @@
   --toggle-border: var(--color-base-200);
   --satin-luxury: radial-gradient(
     ellipse at 100% -10%, 
-    var(--color-base-50) 0%, 
-    var(--color-base-100) 100%
+    var(--color-base-0) 0%, 
+    var(--color-base-50) 100%
   );
 }
 
