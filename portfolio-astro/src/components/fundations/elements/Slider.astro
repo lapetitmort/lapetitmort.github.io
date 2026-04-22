@@ -20,7 +20,7 @@ const { projects, sliderId } = Astro.props;
 ---
 
 <div class="relative mt-12">
-  <div id={sliderId} class="group/slider flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar rounded-4xl">
+  <div id={sliderId} class="group/slider flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
     {
       projects.map((project: Project, index: number) => {
         const [visible, hidden] = project.description.split("brand experience.");
@@ -55,7 +55,7 @@ const { projects, sliderId } = Astro.props;
               </Text>
             </div>
             
-            <div class="mt-12 overflow-hidden rounded-4xl">
+            <div class="mt-12 overflow-hidden">
                <Image
                 width={1420}
                 height={930}
