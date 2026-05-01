@@ -17,57 +17,104 @@ interface Props {
 }
 
 const { projects, sliderId } = Astro.props;
+
+// Configuración centralizada
+const CHAR_LIMIT = 200;
+
+const truncateText = (text: string, limit: number) => {
+  if (text.length <= limit) return { truncated: text, isTruncated: false };
+  return {
+    truncated: text.substring(0, limit).trim(),
+    hidden: text.substring(limit).trim(),
+    isTruncated: true,
+  };
+};
 ---
 
 <div class="relative mt-12">
-  <div id={sliderId} class="group/slider flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
-    {
-      projects.map((project: Project, index: number) => {
-        const [visible, hidden] = project.description.split("brand experience.");
-        return (
-          <div class="min-w-full snap-center pr-4">
-            <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
-              {/* Año: Color gris/muted */}
-              <Text tag="p" variant="textXS" class="text-(--color-muted-text) uppercase">
-                {project.year}
-              </Text>
+  <div class="flex items-center gap-2 md:gap-4 lg:gap-6 lg:gap-8">
+    <!-- Botón anterior -->
+    <button 
+      class="slider-prev-btn flex-shrink-0 p-2 md:p-3 lg:p-4 rounded-lg transition-all duration-300 opacity-0 pointer-events-none hover:scale-110"
+      data-slider={sliderId}
+      aria-label="Previous slide"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-(--color-main-text) w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
 
-              {/* Título: Color principal (Blanco en dark / Negro en light) */}
-              <Text tag="h3" variant="displaySM" class="text-(--color-main-text) leading-tight font-semibold">
-                {project.title}
-              </Text>
+    <!-- Slider container -->
+    <div id={sliderId} class="group/slider flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar flex-1">
+      {
+        projects.map((project: Project, index: number) => {
+          const result = truncateText(project.description, CHAR_LIMIT);
+          const descriptionId = `description-${sliderId}-${index}`;
+          const hiddenId = `hidden-${sliderId}-${index}`;
+          
+          return (
+            <div class="min-w-full snap-center pr-4">
+              <div class="grid grid-cols-1 gap-4 lg:grid-cols-4 items-start mt-8 pb-12 border-b border-base-200 dark:border-base-800">
+                {/* Año: Color gris/muted */}
+                <Text tag="p" variant="textXS" class="text-(--color-muted-text) uppercase">
+                  {project.year}
+                </Text>
+
+                {/* Título: Color principal (Blanco en dark / Negro en light) */}
+                <Text tag="h3" variant="displaySM" class="text-(--color-main-text) leading-tight font-semibold">
+                  {project.title}
+                </Text>
+                
+                {/* Descripción: Color gris/muted */}
+                <Text tag="p" variant="textSM" class="text-(--color-muted-text)">
+                  <span id={descriptionId}>{result.truncated}</span>
+                  {result.isTruncated && (
+                    <>
+                      <span id={hiddenId} class="hidden">{result.hidden}</span>
+                      <button 
+                        class="see-more-btn ml-1 underline font-medium text-(--color-main-text) cursor-pointer"
+                        data-target-visible={descriptionId}
+                        data-target-hidden={hiddenId}
+                        data-original-text={result.truncated}
+                        data-hidden-text={result.hidden}
+                      >
+                        See More
+                      </button>
+                    </>
+                  )}
+                </Text>
+
+                {/* Categoría: Color gris/muted */}
+                <Text tag="p" variant="textXS" class="text-(--color-muted-text) uppercase lg:ml-auto">
+                  {project.category}
+                </Text>
+              </div>
               
-              {/* Descripción: Color gris/muted */}
-              <Text tag="p" variant="textSM" class="text-(--color-muted-text)">
-                {visible}brand experience.
-                <span id={`extra-${sliderId}-${index}`} class="hidden">{hidden}</span>
-                <button 
-                  class="see-more-btn ml-1 underline font-medium text-(--color-main-text) cursor-pointer"
-                  data-target={`extra-${sliderId}-${index}`}
-                >
-                  See More
-                </button>
-              </Text>
+              <div class="mt-12 overflow-hidden">
+                 <Image
+                  width={1420}
+                  height={930}
+                  src={project.image}
+                  alt={project.imageAlt}
+                  class={`object-cover w-full h-auto transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing group-hover/slider:-translate-x-12 hover:scale-[0.98] ${index === 0 ? 'origin-left' : 'origin-center'}`}
+                />
+              </div>
+            </div>
+          )
+        })
+      }
+    </div>
 
-              {/* Categoría: Color gris/muted */}
-              <Text tag="p" variant="textXS" class="text-(--color-muted-text) uppercase lg:ml-auto">
-                {project.category}
-              </Text>
-            </div>
-            
-            <div class="mt-12 overflow-hidden">
-               <Image
-                width={1420}
-                height={930}
-                src={project.image}
-                alt={project.imageAlt}
-                class={`object-cover w-full h-auto transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing group-hover/slider:-translate-x-12 hover:scale-[0.98] ${index === 0 ? 'origin-left' : 'origin-center'}`}
-              />
-            </div>
-          </div>
-        )
-      })
-    }
+    <!-- Botón siguiente -->
+    <button 
+      class="slider-next-btn flex-shrink-0 p-2 md:p-3 lg:p-4 rounded-lg transition-all duration-300 hover:scale-110"
+      data-slider={sliderId}
+      aria-label="Next slide"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-(--color-main-text) w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
   </div>
 </div>
 
@@ -75,4 +122,46 @@ const { projects, sliderId } = Astro.props;
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   .hidden { display: none !important; }
+
+  .slider-prev-btn,
+  .slider-next-btn {
+    background-color: var(--color-main-text);
+    color: var(--color-background);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slider-prev-btn:hover,
+  .slider-next-btn:hover {
+    background-color: var(--color-main-text);
+  }
+
+  .dark .slider-prev-btn,
+  .dark .slider-next-btn {
+    background-color: var(--color-main-text);
+    color: var(--color-background);
+  }
+
+  /* Responsive: reducir gap en mobile/tablet */
+  @media (max-width: 1024px) {
+    .flex.items-center {
+      gap: 0.5rem !important;
+    }
+  }
 </style>
+
+<script>
+  import { initSlider, initSeeMore } from '@/scripts/sliderNavigation';
+
+  initSeeMore();
+
+  // Inicializar todos los sliders
+  document.querySelectorAll('[id^="slider"]').forEach(slider => {
+    if (slider.id) {
+      initSlider(slider.id);
+    }
+  });
+</script>
